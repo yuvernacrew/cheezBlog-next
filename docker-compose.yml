@@ -1,0 +1,23 @@
+# 使用するComposeファイル形式のバージョン
+# 参考: https://docs.docker.com/compose/compose-file/
+version: "3"
+# アプリケーションを動かすための各要素
+services:
+  # サービス名(コンテナ名)
+  front:
+    # ビルドされるときのpath
+    # context:  Dockerfileがあるディレクトリ・パスを指定(省略化)
+    # dockerfile: dockerfileの変わりになるものを定義 (デフォはdockerfile)
+    build: ./front/
+    # ローカルのディレクトリが接続（マウント）する作業ディレクトリを指定
+    volumes:
+      - ./front:/usr/src/app
+    # 外部に対して公開するポート番号
+    # 今回は、3000で
+    ports:
+      - "8000:3000"
+    # 環境
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    command: sh -c "yarn run dev"
+
