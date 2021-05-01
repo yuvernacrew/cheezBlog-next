@@ -14,7 +14,7 @@ docker-compose build --no-cache
 # コンテナ 立ち上げ
 docker-compose up -d
 # アクセス
-http://localhost:8000/
+http://localhost:3000/
 ```
 
 ### ビルド
