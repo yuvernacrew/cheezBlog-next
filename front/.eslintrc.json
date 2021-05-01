@@ -8,10 +8,7 @@
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended"
   ],
-  "plugins": [
-    "react",
-    "@typescript-eslint"
-  ],
+  "plugins": ["react", "@typescript-eslint"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -22,5 +19,6 @@
   },
   "rules": {
     "react/react-in-jsx-scope": "off"
-  }
+  },
+  "ignorePatterns": ["next.config.js"]
 }
