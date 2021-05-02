@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 export default gql`
   query($code: String!) {
-    cheezBlogCollection(where: { code: $code }) {
+    ${process.env.contentfulCollectionName}(where: { code: $code }) {
       items {
         sys {
           id
@@ -12,6 +12,7 @@ export default gql`
         code
         title
         content
+        robots
         mainVisual {
           url
           title
