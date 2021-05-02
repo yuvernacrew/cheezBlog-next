@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 export default gql`
   {
-    cheezBlogCollection {
+    ${process.env.contentfulCollectionName} {
       items {
         sys {
           id
