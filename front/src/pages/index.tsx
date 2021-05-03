@@ -4,6 +4,7 @@ import { useQuery } from '@apollo/client';
 import { graqhqlCliant } from '@/plugins/graphqlCliant';
 import articles from '@/queries/articles';
 import { ArticleList } from '@/@types/ArticleList';
+import { Layout } from '@/layouts/default';
 
 const style = css({
   backgroundColor: '#888',
@@ -17,7 +18,13 @@ const Index = ({ articleList }: { articleList: ArticleList }) => {
     return data[process.env.contentfulCollectionName].items;
   };
 
-  return <div css={style}>{JSON.stringify(articleData(), null, 2)}</div>;
+  return (
+    <>
+      <Layout>
+        <div css={style}>{JSON.stringify(articleData(), null, 2)}</div>
+      </Layout>
+    </>
+  );
 };
 
 export default Index;

@@ -3,20 +3,24 @@ import { css } from '@emotion/react';
 import { useQuery } from '@apollo/client';
 import { useRouter } from 'next/router';
 import { graqhqlCliant } from '@/plugins/graphqlCliant';
+import { Layout } from '@/layouts/default';
 
 // queries
 import articleByCode from '@/queries/articleByCode';
 import articleCodes from '@/queries/articleCodes';
 
-// Article
+// type
 import { Article } from '@/@types/Article';
+import MarkdownToHtml from '@/components/Apps/MarkdownToHtml';
+
+// component
 
 const style = css({
   backgroundColor: '#888',
 });
 
 const ArticlePage = ({ article }: { article: Article }) => {
-  const articleData = () => {
+  const articleData: Article = (() => {
     if (Object.keys(article).length) return article;
 
     const router = useRouter();
@@ -26,9 +30,18 @@ const ArticlePage = ({ article }: { article: Article }) => {
     });
 
     return data[process.env.contentfulCollectionName].items[0];
-  };
+  })();
 
-  return <div css={style}>{JSON.stringify(articleData(), null, 2)}</div>;
+  return (
+    <Layout title={`${articleData.title} | cheezBlog`}>
+      <>
+        <div>
+          <MarkdownToHtml markdown={articleData.content} />
+        </div>
+        <div css={style}>{JSON.stringify(articleData.title, null, 2)}</div>
+      </>
+    </Layout>
+  );
 };
 
 export default ArticlePage;
@@ -67,7 +80,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     paths: data[process.env.contentfulCollectionName].items.map(
       ({ code }: { code: string }) => ({
         params: {
-          code: code,
+          code,
         },
       })
     ),

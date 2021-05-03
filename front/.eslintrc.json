@@ -18,7 +18,10 @@
     "sourceType": "module"
   },
   "rules": {
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "react/no-children-prop": "off"
   },
   "ignorePatterns": ["next.config.js"]
 }
