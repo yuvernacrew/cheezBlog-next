@@ -1,27 +1,29 @@
-import { GetStaticProps } from 'next';
-import { css } from '@emotion/react';
+import { GetStaticProps, NextPage } from 'next';
 import { useQuery } from '@apollo/client';
 import { graqhqlCliant } from '@/plugins/graphqlCliant';
 import articles from '@/queries/articles';
-import { ArticleList } from '@/@types/ArticleList';
+import type { ArticleListItemType } from '@/@types/ArticleListItemType';
 import { Layout } from '@/layouts/default';
+import ArticleList from '@/components/projects/ArticleList';
 
-const style = css({
-  backgroundColor: '#888',
-});
+type PropsType = {
+  articleList: Array<ArticleListItemType>;
+};
 
-const Index = ({ articleList }: { articleList: ArticleList }) => {
-  const articleData = () => {
-    if (Object.keys(articleList).length) return articleList;
+const Index: NextPage<PropsType> = (props) => {
+  const articleList = (() => {
+    if (Object.keys(props.articleList).length) return props.articleList;
 
     const { data } = useQuery(articles);
     return data[process.env.contentfulCollectionName].items;
-  };
+  })();
 
   return (
     <>
       <Layout>
-        <div css={style}>{JSON.stringify(articleData(), null, 2)}</div>
+        <>
+          <ArticleList articleList={articleList} />
+        </>
       </Layout>
     </>
   );

@@ -1,6 +1,8 @@
 import ReactMarkdown from 'react-markdown';
 import { PrismAsync as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { css } from '@emotion/react';
 import solarizedlight from 'react-syntax-highlighter/dist/cjs/styles/prism/solarizedlight';
+import { Color } from '@/components/util/Color';
 
 // TODO propsの型を分からずに使っているため、コードをしっかり見る
 const components = {
@@ -24,10 +26,24 @@ type Props = {
   markdown: string;
 };
 
+const markdownHtmlStyle = css({
+  h2: {
+    borderWidth: '4px 0',
+    borderStyle: 'double',
+    borderColor: Color.black,
+  },
+  h3: { backgroundColor: Color.gray.lighter },
+  '.panel-primay': {},
+});
+
 const MarkdownToHtml: React.FC<Props> = ({ markdown }) => {
   return (
     <>
-      <ReactMarkdown components={components} children={markdown} />
+      <ReactMarkdown
+        components={components}
+        children={markdown}
+        css={markdownHtmlStyle}
+      />
     </>
   );
 };

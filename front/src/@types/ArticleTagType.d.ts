@@ -1,4 +1,4 @@
-export interface ArticleTag {
+export interface ArticleTagType {
   name: string;
   code: string;
 }

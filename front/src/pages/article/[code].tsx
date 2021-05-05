@@ -1,4 +1,9 @@
-import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
+import {
+  GetStaticPaths,
+  GetStaticProps,
+  InferGetStaticPropsType,
+  NextPage,
+} from 'next';
 import { css } from '@emotion/react';
 import { useQuery } from '@apollo/client';
 import { useRouter } from 'next/router';
@@ -10,17 +15,17 @@ import articleByCode from '@/queries/articleByCode';
 import articleCodes from '@/queries/articleCodes';
 
 // type
-import { Article } from '@/@types/Article';
+import { ArticleType } from '@/@types/ArticleType';
 import MarkdownToHtml from '@/components/Apps/MarkdownToHtml';
 
 // component
 
-const style = css({
-  backgroundColor: '#888',
-});
+type PropsType = {
+  article: ArticleType;
+};
 
-const ArticlePage = ({ article }: { article: Article }) => {
-  const articleData: Article = (() => {
+const ArticlePage: NextPage<PropsType> = ({ article }) => {
+  const articleData: ArticleType = (() => {
     if (Object.keys(article).length) return article;
 
     const router = useRouter();
@@ -38,7 +43,6 @@ const ArticlePage = ({ article }: { article: Article }) => {
         <div>
           <MarkdownToHtml markdown={articleData.content} />
         </div>
-        <div css={style}>{JSON.stringify(articleData.title, null, 2)}</div>
       </>
     </Layout>
   );
