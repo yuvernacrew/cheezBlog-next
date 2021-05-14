@@ -16,9 +16,9 @@ import articleCodes from '@/queries/articleCodes';
 
 // type
 import { ArticleType } from '@/@types/ArticleType';
-import MarkdownToHtml from '@/components/Apps/MarkdownToHtml';
 
 // component
+import ArticlePageItem from '@/components/projects/ArticlePageItem';
 
 type PropsType = {
   article: ArticleType;
@@ -41,7 +41,7 @@ const ArticlePage: NextPage<PropsType> = ({ article }) => {
     <Layout title={`${articleData.title} | cheezBlog`}>
       <>
         <div>
-          <MarkdownToHtml markdown={articleData.content} />
+          <ArticlePageItem article={articleData} />
         </div>
       </>
     </Layout>

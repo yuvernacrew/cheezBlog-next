@@ -6,15 +6,15 @@ type Props = {
   articleList: Array<ArticleListItemType>;
 };
 
+const container = css({});
+
 const ArticleList: React.FC<Props> = ({ articleList }) => {
   return (
-    <>
-      <ul>
-        {articleList.map((article) => (
-          <ArticleListItem article={article} key={article.code} />
-        ))}
-      </ul>
-    </>
+    <ul css={container}>
+      {articleList.map((article) => (
+        <ArticleListItem article={article} key={article.code} />
+      ))}
+    </ul>
   );
 };
 

@@ -4,7 +4,7 @@ import { graqhqlCliant } from '@/plugins/graphqlCliant';
 import articles from '@/queries/articles';
 import type { ArticleListItemType } from '@/@types/ArticleListItemType';
 import { Layout } from '@/layouts/default';
-import ArticleList from '@/components/projects/ArticleList';
+import IndexItem from '@/components/projects/IndexPageItem';
 
 type PropsType = {
   articleList: Array<ArticleListItemType>;
@@ -21,9 +21,7 @@ const Index: NextPage<PropsType> = (props) => {
   return (
     <>
       <Layout>
-        <>
-          <ArticleList articleList={articleList} />
-        </>
+        <IndexItem articleList={articleList} />
       </Layout>
     </>
   );

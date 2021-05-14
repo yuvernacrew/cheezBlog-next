@@ -3,6 +3,7 @@ import { PrismAsync as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { css } from '@emotion/react';
 import solarizedlight from 'react-syntax-highlighter/dist/cjs/styles/prism/solarizedlight';
 import { Color } from '@/components/util/Color';
+import { Size } from '@/components/util/Size';
 
 // TODO propsの型を分からずに使っているため、コードをしっかり見る
 const components = {
@@ -31,6 +32,7 @@ const markdownHtmlStyle = css({
     borderWidth: '4px 0',
     borderStyle: 'double',
     borderColor: Color.black,
+    marginBottom: Size.xxlarge,
   },
   h3: { backgroundColor: Color.gray.lighter },
   '.panel-primay': {},

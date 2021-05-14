@@ -1,20 +1,41 @@
 import { css } from '@emotion/react';
+import { MediaQuery } from '@/components/util/MediaQuery';
 
-const container = css({
-  maxWidth: 375,
+const baseStyle = css({
   margin: '0 auto',
+  maxWidth: '94%',
+  width: '94%',
+
+  [MediaQuery['pc']]: {
+    width: 960,
+    maxWidth: 960,
+  },
 });
 
-type Props = {
-  addStyle?: React.CSSProperties;
+const container = {
+  base: baseStyle,
+  main: css(baseStyle, {
+    [MediaQuery['pc']]: {
+      maxWidth: 700,
+    },
+  }),
+  aside: css(baseStyle, {
+    [MediaQuery['pc']]: {
+      maxWidth: 235,
+    },
+  }),
 };
 
-const ContainerComponent: React.FC<Props> = ({ children }) => {
+type Props = {
+  type?: string;
+};
+
+const Container: React.FC<Props> = ({ children, type = 'base' }) => {
   return (
     <>
-      <div css={[container]}>{children}</div>
+      <div css={container[type]}>{children}</div>
     </>
   );
 };
 
-export default ContainerComponent;
+export default Container;
