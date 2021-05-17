@@ -25,7 +25,7 @@ const IndexItem: React.FC<PropsType> = ({ article }) => {
     <Container>
       <div css={container}>
         <Container type="main">
-          <Card>
+          <Card type="main">
             <MarkdownToHtml markdown={article.content} />
           </Card>
         </Container>

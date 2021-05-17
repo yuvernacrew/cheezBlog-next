@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import { MediaQuery } from '@/components/util/MediaQuery';
 
-const container = css({
+const baseStyle = css({
   backgroundColor: '#fff',
   borderRadius: 8,
   padding: '3%',
@@ -10,8 +10,22 @@ const container = css({
   },
 });
 
-const Card: React.FC = ({ children }) => {
-  return <div css={container}>{children}</div>;
+const container = {
+  base: baseStyle,
+  main: css(baseStyle, {
+    padding: '3%',
+    [MediaQuery['pc']]: {
+      padding: 40,
+    },
+  }),
+};
+
+type Props = {
+  type?: string;
+};
+
+const Card: React.FC<Props> = ({ children, type = 'base' }) => {
+  return <div css={container[type]}>{children}</div>;
 };
 
 export default Card;

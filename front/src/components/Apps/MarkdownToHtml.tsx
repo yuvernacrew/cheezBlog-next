@@ -31,11 +31,37 @@ const markdownHtmlStyle = css({
   h2: {
     borderWidth: '4px 0',
     borderStyle: 'double',
-    borderColor: Color.black,
-    marginBottom: Size.xxlarge,
+    borderColor: Color.gray.dark,
+    margin: '2.4em 0 1.4em',
+    padding: '0.25em',
+    fontSize: '1.3em',
   },
-  h3: { backgroundColor: Color.gray.lighter },
-  '.panel-primay': {},
+
+  h3: {
+    borderBottom: `2px solid ${Color.primary.default}`,
+    margin: '2em 0 1.2em',
+    padding: '0.2em',
+    fontSize: '1.25em',
+  },
+
+  h4: {
+    display: 'flex',
+    alignItems: 'center',
+    fontSize: '1.1em',
+    margin: '1.6em 0 0.8em',
+
+    '&::before': {
+      content: '""',
+      width: '0.8em',
+      height: '0.8em',
+      marginRight: '0.4em',
+      backgroundColor: Color.primary.default,
+    },
+  },
+
+  p: {
+    fontSize: '1em',
+  },
 });
 
 const MarkdownToHtml: React.FC<Props> = ({ markdown }) => {

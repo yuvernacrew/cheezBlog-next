@@ -12,10 +12,11 @@ const kyes = [
 
 type SizeKeys = typeof kyes[number];
 
+// 型アサーション
 type SizeType = {
   [key in SizeKeys]: number;
 };
 
-export const Size = kyes.reduce<SizeType>((acc, key, index) => {
+export const Size = kyes.reduce((acc, key, index) => {
   return { ...acc, [key]: (index + 1) * 4 };
-}, {});
+}, {}) as SizeType;
