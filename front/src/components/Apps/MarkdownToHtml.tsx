@@ -3,7 +3,6 @@ import { PrismAsync as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { css } from '@emotion/react';
 import solarizedlight from 'react-syntax-highlighter/dist/cjs/styles/prism/solarizedlight';
 import { Color } from '@/components/util/Color';
-import { Size } from '@/components/util/Size';
 
 // TODO propsの型を分からずに使っているため、コードをしっかり見る
 const components = {
@@ -61,6 +60,7 @@ const markdownHtmlStyle = css({
 
   p: {
     fontSize: '1em',
+    lineHeight: 1.6,
   },
 });
 
