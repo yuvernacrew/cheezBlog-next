@@ -17,7 +17,7 @@ const container = css({
 });
 
 const test = css({
-  backgroundColor:    '#ddd',
+  backgroundColor: '#ddd',
 });
 
 type PropsType = {
