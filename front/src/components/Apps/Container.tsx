@@ -28,12 +28,13 @@ const container = {
 
 type Props = {
   type?: string;
+  addStyle?: any;
 };
 
-const Container: React.FC<Props> = ({ children, type = 'base' }) => {
+const Container: React.FC<Props> = ({ children, type = 'base', addStyle }) => {
   return (
     <>
-      <div css={container[type]}>{children}</div>
+      <div css={(container[type], addStyle)}>{children}</div>
     </>
   );
 };

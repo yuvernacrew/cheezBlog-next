@@ -16,6 +16,10 @@ const container = css({
   },
 });
 
+const test = css({
+  backgroundColor:    '#ddd',
+});
+
 type PropsType = {
   article: ArticleType;
 };
@@ -24,7 +28,7 @@ const IndexItem: React.FC<PropsType> = ({ article }) => {
   return (
     <Container>
       <div css={container}>
-        <Container type="main">
+        <Container type="main" addStyle={test}>
           <Card type="main">
             <MarkdownToHtml markdown={article.content} />
           </Card>
