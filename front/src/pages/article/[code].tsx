@@ -4,7 +4,6 @@ import {
   InferGetStaticPropsType,
   NextPage,
 } from 'next';
-import { css } from '@emotion/react';
 import { useQuery } from '@apollo/client';
 import { useRouter } from 'next/router';
 import { graqhqlCliant } from '@/plugins/graphqlCliant';

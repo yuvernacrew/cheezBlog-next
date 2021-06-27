@@ -18,4 +18,6 @@ export const Color = {
     darker: '#7d7c78',
   },
   black: '#444',
-};
+} as const;
+
+export type ColorType = typeof Color;
